@@ -1,0 +1,41 @@
+When you send a signal in django, 
+the signal handlers are executed in the 
+same thread that sent the signal. 
+This implies that any modifications made 
+in the signal handler, such as database 
+operations, take place within the same thread 
+context and can impact the execution of the 
+caller. 
+Since signals operate within the same thread,
+they have access to the same context and 
+can modify shared resources.In the context 
+of database transactions, 
+if the signal is triggered within a 
+transaction, the modifications made by 
+the signal handler will be recorded 
+within that transaction. 
+In the event of an error, 
+all modifications can be undone, 
+guaranteeing the accuracy and reliability 
+of the data. 
+
+Concurrency: if the signal is sent from a 
+separate thread (like in a threaded request), 
+the handlers will continue to run in that same 
+thread, ensuring thread safety. 
+
+Practical implications.
+Steps to run : 
+
+1) Install python and clone the Repo
+
+2) Go to the folder location where requirements.txt exist 
+and run commands below : -
+	a)pip install requirements.txt
+
+3) Now Run the Solution.py file and observe the 
+output as below: -
+	Emitting signal from thread: MainThread
+	Signal received in thread: MainThread
+	Emitting signal from thread: Thread-1
+	Signal received in thread: Thread-1

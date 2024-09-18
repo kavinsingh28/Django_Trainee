@@ -1,0 +1,31 @@
+By default, Django signals are fired synchronously. 
+This means that when a signal is sent, the signal handler 
+will execute the same call as the code that sent the signal, 
+and the code will wait for the signal handler to finish first. 
+Django signals are used to allow decoupled applications to 
+receive notifications when certain actions occur elsewhere in 
+the application. They’re essentially a way to let certain 
+parts of the code know about changes and react to them without 
+having to be rigid about them. Simultaneous Execution of Signals
+When a signal is sent in Django, everyone who processes the signal 
+is placed on the same thread. This is a synchronous behavior. 
+The main thread will wait for all handlers to complete this signal
+before continuing.
+
+Steps to run : 
+
+1) Install python and clone the Repo
+
+2) Go to the folder location where requirements.txt exist 
+and run commands on terminal/cmd below : -
+	a)pip install requirements.txt
+	b)cd myproject
+	c)python manage.py shell
+
+3) Now inside shell write below commands : -
+	a)from myapp.models import MyModel
+	b)obj = MyModel(name='Test')
+	c)obj.save()
+
+4) Check the signals.log file and observe the delave to run save 
+again

@@ -1,0 +1,38 @@
+When a transaction is initiated,a signal is sent to 
+the database,and the associated handlers will execute 
+within the same transaction context. 
+
+Atomicity: any modifications made through 
+the signal handlers are considered part of 
+the same transaction. If an error occurs 
+during the sign coping process, all modifications 
+made in that transaction can be rolled back, 
+preserving the accuracy of the database. 
+
+In the context of views, 
+if you transmit a signal within a view, 
+it is enclosed within a transaction. 
+The signal handlers will function within this transaction.
+Conversely, if the signal is emitted outside of a transaction,
+the handlers will no longer be involved in any transaction.
+
+1) Install python and clone the Repo
+
+2) Go to the folder location where requirements.txt exist 
+and run commands on terminal/cmd below : -
+	a)pip install requirements.txt
+	b)cd myproject
+	c)python manage.py shell
+
+3) Now inside shell write below commands : -
+	a) python manage.py runserver
+
+4) Open the URL "http://127.0.0.1:8000/create/"
+
+5) Observe the output as on terminal: -
+ 	Creating instance...
+	Signal handler running...
+6) Observe the output on the url as: - 
+	Database records after transaction:
+	Original
+	Signal Triggered

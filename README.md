@@ -1,2 +1,2 @@
 # Django_Trainee
-Django Trainee  Solutions
+Django Trainee  Solutions are Inside Each folder
